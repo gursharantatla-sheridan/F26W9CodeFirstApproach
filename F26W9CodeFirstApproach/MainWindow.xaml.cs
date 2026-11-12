@@ -16,9 +16,24 @@ namespace F26W9CodeFirstApproach
     /// </summary>
     public partial class MainWindow : Window
     {
+        SchoolContext db = new SchoolContext();
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void LoadStudents()
+        {
+            var students = db.Students
+                             .Select(s => new { s.StudentId, s.StudentName, s.Standard.StandardName })
+                             .ToList();
+            grdStudents.ItemsSource = students;
+        }
+
+        private void btnLoadStudents_Click(object sender, RoutedEventArgs e)
+        {
+            LoadStudents();
         }
     }
 }
