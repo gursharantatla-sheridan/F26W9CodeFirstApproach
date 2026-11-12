@@ -72,11 +72,15 @@ namespace F26W9CodeFirstApproach.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StudentId"));
 
+                    b.Property<int?>("Age")
+                        .HasColumnType("int");
+
                     b.Property<int?>("StandardId")
                         .HasColumnType("int");
 
                     b.Property<string>("StudentName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Name");
 
                     b.HasKey("StudentId");
 
